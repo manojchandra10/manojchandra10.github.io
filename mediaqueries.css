@@ -1,0 +1,232 @@
+/* MEDIA QUERIES */
+
+/* Small devices (phones, 576px and up) */
+@media (max-width: 576px) {
+    body {
+        grid-template-columns: auto;
+    }
+
+    nav {
+        padding: 1rem;
+        
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    #desk-nav {
+        display: none;
+    }
+
+    #hamburger-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 1rem; */
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu-links {
+        position: absolute;
+        display: flex;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        /* max-height: 200px; */
+        flex-direction: column;
+        /* gap: 1rem; */
+        /* max-height: initial; */
+        overflow: hidden;
+        background-color: rgb(248,249,250);
+        transition: max-height 0.3s ease-in-out;
+    }
+    
+    .menu-links.open {
+        max-height: 200px; /* Adjust max height to show menu items */
+    }
+
+    .menu-links a {
+        display: block;
+        padding: .75rem 0;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+        /* font-size: 1.5rem; */
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .menu-links a:hover {
+        color: gray; /* Change color on hover */
+    }
+
+    .hamburger-icon {
+        width: 40px;
+    }
+
+    .hamburger-icon span {
+        height: 3px;
+    }
+
+    .pic-container {
+        /* height: 200px; */
+        /* width: 200px; */
+        margin: auto;
+    }
+
+    .pic-container img {
+        /* height: 200px; */
+        /* width: 200px; */
+        display: none;
+    }
+
+    #profile {
+        
+        /* margin-left: 20px; */
+        max-width: 200px;
+    }
+
+    .section-text {
+        text-align: left;
+        font-size: 1.25rem;
+    }
+
+    .greeting-name {
+        text-align: left;
+        font-size: 3rem;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    .projects {
+        grid-template-columns: auto;
+    }
+
+    .project {
+        padding: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 576px) {
+    nav {
+        padding: 0 2rem;
+    }
+
+    .hamburger-icon {
+        display: none;
+    }
+
+    #desk-nav {
+        display: flex;
+    }
+
+    .pic-container {
+        height: 400px;
+        width: 400px;
+        /* margin: auto; */
+    }
+
+    .pic-container img {
+        height: 400px;
+        width: 400px;
+    }
+}
+
+/* Screen sizes between 576px and 745px */
+@media (min-width: 576px) and (max-width: 745px) {
+    /* Navbar */
+    nav {
+        padding: 0 2rem;
+    }
+
+    .hamburger-icon {
+        display: none;
+    }
+
+    #desk-nav {
+        display: flex;
+    }
+
+    /* Profile */
+    .pic-container {
+        /* height: 300px; */
+        /* width: 300px; */
+        margin: auto;
+    }
+
+    .pic-container img {
+        /* height: 300px; */
+        /* width: 300px; */
+        display: none;
+    }
+
+    /* Projects */
+    .projects {
+        grid-template-columns: auto;
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 30px;
+        background-color: rgb(248,249,250);
+    }
+}
+
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    nav {
+        padding: 0 7rem;
+    }
+
+    .hamburger-menu {
+        display: none;
+    }
+
+    #hamburger-nav {
+        display: none;
+    }
+}
+
+/* Titled Screen on small devices */
+@media (min-height: 359px) and (max-height: 481px) {
+    #profile{
+        margin-top: 25px;
+    }
+
+    .pic-container {
+        height: 300px;
+        width: 300px;
+        /* margin: auto; */
+    }
+
+    .pic-container img {
+        height: 300px;
+        width: 300px;
+        /* display: none; */
+    }
+
+    .section-text {
+        text-align: left;
+        font-size: 1rem;
+        height: 350px;
+        width: 350px;
+    }
+
+    .greeting-name {
+        text-align: left;
+        font-size: 3rem;
+    }
+
+}
