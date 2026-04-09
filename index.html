@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manoj Chandra — Data Scientist & Mathematician</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--green:#FF851B;--purple:#8B5CF6;
+  --white:#F0F0F0;--gray:#999;--dim:#555;
+  --light:#E5E5E5;--border:1px solid #222;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--green);color:var(--bg)}
+img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;height:50px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:var(--border)}
+nav .logo{font-family:'Inter',sans-serif;font-size:1.2rem;letter-spacing:1px; font-weight: bold; color: #FF851B;}
+/* nav .logo {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  background-color: var(--green);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+} */
+nav .logo span{color:var(--purple)}
+.nav-links{display:flex;gap:0.2rem}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;padding:0.4rem 0.7rem;color:var(--gray);transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white)}
+
+/* UTILITY */
+.mono{font-family:'JetBrains Mono',monospace}
+.upper{text-transform:uppercase}
+.anton{font-family:'Oswald',sans-serif}
+
+/* ═══ HERO ═══ */
+.hero{margin-top:50px;min-height:100vh;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+.hero-left{padding:4rem 3rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hero-right{position:relative;overflow:hidden}
+.hero-right img{position:absolute;inset:0;filter:grayscale(1) contrast(1.1);opacity:0.7}
+.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,transparent 30%)}
+.hero-right .overlay-text{position:absolute;bottom:3rem;right:3rem;z-index:2;font-family:'Oswald',sans-serif;font-size:clamp(3rem,8vw,6rem);color:var(--white);opacity:0.15;line-height:0.9;text-align:right;text-transform:uppercase}
+
+.hero-explore{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:2rem}
+.hero h1{font-family:'Oswald',sans-serif;font-size:clamp(3.5rem, 8vw, 6.5rem);line-height:1.05;text-transform:uppercase;margin-bottom:1rem;letter-spacing:-2px}
+.hero h1 .green{color:var(--green)}
+.hero-sub{font-family:'Oswald',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);text-transform:uppercase;color:var(--gray);letter-spacing:1px;margin-bottom:2rem;line-height:1.1}
+
+.hero-phases{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:var(--border);border-bottom:var(--border);margin-top:2rem}
+.phase{padding:1.2rem 0;border-right:var(--border);text-align:center}
+.phase:last-child{border-right:none}
+.phase .p-num{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:2px;color:var(--dim);margin-bottom:0.3rem}
+.phase .p-label{font-family:'Oswald',sans-serif;font-size:0.85rem;text-transform:uppercase;letter-spacing:1px}
+.phase .p-label .hl{color:var(--green)}
+
+/* Stripes decoration */
+.stripes-v{position:absolute;top:0;right:0;width:120px;height:100%;background:repeating-linear-gradient(0deg,var(--green) 0px,var(--green) 2px,transparent 2px,transparent 7px);opacity:0.12;z-index:1}
+
+/* ═══ FULL-WIDTH STATEMENT ═══ */
+.statement-section{background:var(--bg);padding:5rem 3rem;border-top:var(--border)}
+.statement-section h2{font-family:'Oswald',sans-serif;font-size:clamp(2.5rem,6vw,5rem);text-transform:uppercase;line-height:0.95;color:var(--green)}
+.statement-section .sub{font-family:'Oswald',sans-serif;font-size:clamp(1.5rem,3.5vw,3rem);text-transform:uppercase;color:var(--white);margin-top:0.5rem;line-height:1.1}
+
+/* ═══ SPLIT SECTION (image + text) ═══ */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
+.split-img{position:relative;overflow:hidden}
+.split-img img{filter:grayscale(1) contrast(1.1)}
+.split-img .img-label{position:absolute;bottom:1.5rem;left:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:rgba(0,0,0,0.6);padding:0.3rem 0.6rem}
+.split-text{padding:3rem;display:flex;flex-direction:column;justify-content:center}
+.split-text .sec-mod{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:1rem}
+.split-text h2{font-family:'Oswald',sans-serif;font-size:clamp(1.5rem,3vw,2.5rem);text-transform:uppercase;line-height:1.05;margin-bottom:1rem}
+.split-text p{font-size:0.9rem;color:var(--gray);line-height:1.8}
+.split-text p+p{margin-top:0.8rem}
+.split-text em{color:var(--green);font-style:normal;font-weight:700}
+
+/* ═══ GREEN SECTION ═══ */
+.sec-green{background:var(--green);color:var(--bg)}
+.sec-green .sec-mod{color:rgba(0,0,0,0.35)}
+.sec-green h2{color:var(--bg)}
+.sec-green p,.sec-green li{color:rgba(0,0,0,0.6)}
+.sec-green .split-img .img-label{color:var(--bg);background:rgba(0,0,0,0.3)}
+
+/* ═══ LIGHT SECTION ═══ */
+.sec-light{background:var(--light);color:var(--bg)}
+.sec-light .sec-mod{color:var(--purple)}
+
+/* ═══ PROJECT ROWS ═══ */
+.projects-section{padding:5rem 3rem;border-top:var(--border)}
+.sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.sec-mod2{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--green)}
+.sec-title2{font-family:'Oswald',sans-serif;font-size:clamp(2rem,4vw,3rem);text-transform:uppercase;letter-spacing:1px}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--dim)}
+
+.proj{border-top:var(--border);padding:2rem 0;display:grid;grid-template-columns:220px 1fr auto;gap:2rem;align-items:start;transition:background 0.3s;cursor:pointer;position:relative}
+.proj:last-child{border-bottom:var(--border)}
+.proj:hover{background:rgba(57,255,20,0.03)}
+.proj .pr-meta{font-family:'JetBrains Mono',monospace;font-size:0.55rem;text-transform:uppercase;letter-spacing:2px;color:var(--dim)}
+.proj .pr-tag{display:inline-block;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.5rem;text-transform:uppercase;letter-spacing:1.5px;background:var(--green);color:var(--bg);padding:0.2rem 0.5rem}
+.proj h3{font-family:'Oswald',sans-serif;font-size:1.5rem;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.4rem}
+.proj p{font-size:0.85rem;color:var(--gray);line-height:1.7}
+.proj .arrow{font-size:1.5rem;color:var(--dim);transition:all 0.2s;padding-top:0.3rem}
+.proj:hover .arrow{color:var(--green);transform:translateX(5px)}
+.proj .pr-links{margin-top:0.6rem;display:flex;gap:1rem}
+.pr-link{font-family:'JetBrains Mono',monospace;font-size:0.55rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--green);border-bottom:1px solid var(--green);padding-bottom:1px}
+
+/* Green project section overrides */
+.sec-green .proj{border-color:rgba(0,0,0,0.12)}
+.sec-green .proj:hover{background:rgba(0,0,0,0.04)}
+.sec-green .proj .pr-meta,.sec-green .proj p{color:rgba(0,0,0,0.45)}
+.sec-green .proj h3{color:var(--bg)}
+.sec-green .proj .pr-tag{background:var(--bg);color:var(--green)}
+.sec-green .proj .arrow{color:rgba(0,0,0,0.3)}
+.sec-green .proj:hover .arrow{color:var(--bg)}
+.sec-green .pr-link{color:var(--bg);border-color:var(--bg)}
+
+/* ═══ SKILLS ═══ */
+.skills-section{padding:5rem 3rem}
+.skills-cols{display:grid;grid-template-columns:repeat(4,1fr)}
+.skill-col{border-right:1px solid rgba(0,0,0,0.1);padding:1.5rem 2rem}
+.skill-col:last-child{border-right:none}
+.skill-col h4{font-family:'Oswald',sans-serif;font-size:0.95rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+.skill-col h4 .dot{width:7px;height:7px;border-radius:50%;background:var(--purple)}
+.skill-col ul{list-style:none}
+.skill-col li{font-family:'JetBrains Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;padding:0.35rem 0;border-bottom:1px solid rgba(0,0,0,0.06);color:rgba(0,0,0,0.55)}
+
+/* ═══ EDUCATION ═══ */
+.edu-section{padding:5rem 3rem;border-top:var(--border)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr}
+.edu-card{padding:2.5rem;border-right:var(--border)}
+.edu-card:last-child{border-right:none}
+.edu-year{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--green);margin-bottom:0.6rem}
+.edu-card h3{font-family:'Oswald',sans-serif;font-size:1.4rem;text-transform:uppercase;margin-bottom:0.2rem}
+.edu-uni{font-size:0.85rem;color:var(--gray);margin-bottom:0.6rem}
+.edu-mods{font-size:0.8rem;color:var(--dim);line-height:1.7;margin-bottom:0.8rem}
+.edu-badge{font-family:'JetBrains Mono',monospace;font-size:0.5rem;text-transform:uppercase;letter-spacing:1.5px;background:var(--green);color:var(--bg);padding:0.3rem 0.6rem;display:inline-block}
+
+/* ═══ EXPERIENCE ═══ */
+.exp-section{padding:5rem 3rem}
+.exp-item{border-top:var(--border);padding:2rem 0;display:grid;grid-template-columns:250px 1fr;gap:2rem}
+.exp-item:last-child{border-bottom:var(--border)}
+.exp-date{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--green)}
+.exp-item h3{font-family:'Oswald',sans-serif;font-size:1.2rem;text-transform:uppercase;margin-bottom:0.4rem}
+.exp-item p{font-size:0.85rem;color:var(--gray);line-height:1.7}
+
+/* ═══ CONTACT ═══ */
+.contact{padding:6rem 3rem;text-align:center}
+.contact h2{font-family:'Oswald',sans-serif;font-size:clamp(3rem,8vw,7rem);text-transform:uppercase;line-height:0.9;margin-bottom:2rem}
+.contact-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.contact-link{font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:2px;border-bottom:2px solid currentColor;padding-bottom:4px;transition:opacity 0.2s}
+.contact-link:hover{opacity:0.5}
+.sec-green .contact-link{color:var(--bg)}
+
+/* ═══ FOOTER ═══ */
+.footer{padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:var(--border);flex-wrap:wrap;gap:1rem}
+.footer-name{font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,4rem);text-transform:uppercase;color:var(--green);line-height:1}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:1.5px;color:var(--dim);text-transform:uppercase}
+
+/* ═══ MARQUEE ═══ */
+.marquee{border-top:var(--border);border-bottom:var(--border);padding:0.6rem 0;overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-block;animation:m 28s linear infinite;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--dim)}
+.marquee-inner .s{color:var(--green);margin:0 1.2rem}
+@keyframes m{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ═══ REVEAL ═══ */
+.reveal{opacity:0;transform:translateY(20px);transition:all 0.55s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:900px){
+  nav{padding:0 1.5rem}
+  .hero{grid-template-columns:1fr}
+  .hero-right{height:300px;position:relative}
+  .hero-left{padding:3rem 1.5rem}
+  .hero-phases{grid-template-columns:repeat(2,1fr)}
+  .split{grid-template-columns:1fr}
+  .split-img{height:300px}
+  .split-text{padding:2rem 1.5rem}
+  .projects-section,.skills-section,.edu-section,.exp-section,.contact,.statement-section{padding-left:1.5rem;padding-right:1.5rem}
+  .proj{grid-template-columns:1fr;gap:0.5rem}
+  .proj .arrow{display:none}
+  .skills-cols{grid-template-columns:1fr 1fr}
+  .skill-col{border-right:none;border-bottom:1px solid rgba(0,0,0,0.08);padding:1rem}
+  .edu-grid{grid-template-columns:1fr}
+  .edu-card{border-right:none;border-bottom:var(--border)}
+  .exp-item{grid-template-columns:1fr;gap:0.5rem}
+  .nav-links{display:none;position:absolute;top:50px;left:0;right:0;background:var(--bg);border-bottom:var(--border);flex-direction:column;padding:1rem}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:0.8rem 0;border-bottom:var(--border)}
+  .hamburger{display:flex}
+}
+@media(max-width:600px){.skills-cols{grid-template-columns:1fr}.hero-phases{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="logo" style="text-decoration:none">M.</a>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="nav-links">
+    <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a href="blog.html">Blog</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left reveal">
+    <div class="hero-explore">MSc Data Science · University of Nottingham</div>
+    <h1>MANOJ<br><span class="green">CHANDRA</span></h1>
+    <div class="hero-sub">DATA SCIENCE & MATHEMATICS</div>
+    <p style="font-size:0.95rem;color:var(--gray);line-height:1.8;max-width:480px;margin-bottom:2rem">I build things with data, code, and statistical rigour — from LSTM forecasting apps to contaminated chemical detectors.</p>
+    <div class="hero-phases">
+      <div class="phase"><div class="p-num">001</div><div class="p-label"><span class="hl">1ST</span> PLACE</div></div>
+      <div class="phase"><div class="p-num">002</div><div class="p-label"><span class="hl">7+</span> PROJECTS</div></div>
+      <div class="phase"><div class="p-num">003</div><div class="p-label">TOP <span class="hl">1%</span></div></div>
+      <div class="phase"><div class="p-num">004</div><div class="p-label"><span class="hl">FIRST</span> CLASS</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stripes-v"></div>
+    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=900&amp;q=80" alt="Data visualization" loading="eager">
+    <!-- <img src="assets/IMG_1119.JPEG" alt="Data visualization" loading="eager"> -->
+    <div class="overlay-text">MANOJ<br>CHANDRA</div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<div class="statement-section">
+  <h2 style="color:var(--white);font-size:clamp(2.5rem,5.5vw,4.2rem);line-height:1.05;letter-spacing:-1px">TRAINING MYSELF BEFORE I CAN TRAIN <span style="color:var(--green)">ML MODELS</span></h2>
+</div>
+
+<div class="marquee">
+  <div class="marquee-inner">Python<span class="s">◆</span>R<span class="s">◆</span>SQL<span class="s">◆</span>Machine Learning<span class="s">◆</span>Deep Learning<span class="s">◆</span>Statistical Modelling<span class="s">◆</span>XGBoost<span class="s">◆</span>TensorFlow<span class="s">◆</span>Docker<span class="s">◆</span>React<span class="s">◆</span>Flask<span class="s">◆</span>Python<span class="s">◆</span>R<span class="s">◆</span>SQL<span class="s">◆</span>Machine Learning<span class="s">◆</span>Deep Learning<span class="s">◆</span>Statistical Modelling<span class="s">◆</span>XGBoost<span class="s">◆</span>TensorFlow<span class="s">◆</span>Docker<span class="s">◆</span>React<span class="s">◆</span>Flask<span class="s">◆</span></div>
+</div>
+
+<!-- <div class="marquee">
+  <div class="marquee-inner">Python<span class="s">·</span>R<span class="s">·</span>SQL<span class="s">·</span>Machine Learning<span class="s">·</span>Deep Learning<span class="s">·</span>Statistical Modelling<span class="s">·</span>Time Series<span class="s">·</span>XGBoost<span class="s">·</span>TensorFlow<span class="s">·</span>Docker<span class="s">·</span>React<span class="s">·</span>PHP<span class="s">·</span>Python<span class="s">·</span>R<span class="s">·</span>SQL<span class="s">·</span>Machine Learning<span class="s">·</span>Deep Learning<span class="s">·</span>Statistical Modelling<span class="s">·</span>Time Series<span class="s">·</span>XGBoost<span class="s">·</span>TensorFlow<span class="s">·</span>Docker<span class="s">·</span>React<span class="s">·</span>PHP<span class="s">·</span></div>
+</div> -->
+
+<!-- ABOUT -->
+<section class="split" id="about">
+  <div class="split-img">
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&amp;q=80" alt="Data" loading="lazy">
+    <div class="img-label">DATA · CODE · MATHEMATICS</div>
+  </div>
+  <div class="split-text reveal">
+    <div class="sec-mod">// About — The Short Version</div>
+    <!-- <h2>DATA MEETS<br>MATHEMATICS</h2> -->
+     <h2>EMBRACING THE<br>UNKNOWN</h2>
+    <p>I'm an MSc Data Science student at the University of Nottingham, with a First-Class Honours degree in Mathematics from the University of Delhi. I'm interested in the space where statistical theory meets real-world prediction problems.</p>
+    <p>My recent work spans from building a <em>privacy-first file conversion tool</em> (DeltaConvert) to training <em>LSTM models for currency forecasting</em> (Stochastix), to winning a statistical ML competition by proving that a two-parameter linear model can beat a Random Forest when the data structure is right.</p>
+    <p>I care about understanding <em>why</em> a model works, not just <em>that</em> it works.</p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="sec-header reveal">
+    <div><div class="sec-mod2">// Projects</div><div class="sec-title2">THINGS I'VE BUILT</div></div>
+    <div class="sec-num">// 002</div>
+  </div>
+
+  <a href="https://deltaconvert.com" target="_blank" class="proj reveal">
+    <div class="pr-meta">FULL-STACK · LIVE<br><span class="pr-tag">Flask · Docker · Nginx</span></div>
+    <div><h3>DELTACONVERT</h3><p>Privacy-first file conversion tool — images, documents, OCR — all processed server-side. Built with Flask, deployed on Hetzner with Docker Compose, Nginx, and SSL via Certbot.</p><div class="pr-links"><span class="pr-link">Live Site ↗</span><span class="pr-link">GitHub ↗</span></div></div>
+    <div class="arrow">→</div>
+  </a>
+
+  <a href="https://deltaconvert.com" target="_blank" class="proj reveal">
+    <div class="pr-meta">DEEP LEARNING · LIVE<br><span class="pr-tag">LSTM · React · Plotly</span></div>
+    <div><h3>STOCHASTIX</h3><p>LSTM-based 30-day currency exchange rate forecaster. 29 trained models, React frontend with interactive Plotly charts, daily ECB audit cron job.</p><div class="pr-links"><span class="pr-link">Live Site ↗</span></div></div>
+    <div class="arrow">→</div>
+  </a>
+
+  <div class="proj reveal">
+    <div class="pr-meta">ACADEMIC · R · 1ST PLACE<br><span class="pr-tag">R · XGBoost · OLS</span></div>
+    <div><h3>STATISTICAL ML — BEST SCORE, BOTH CHALLENGES</h3><p>Chemicals: Per-type linear regression beating Random Forest (score 98, 1st of all groups). Trains: XGBoost on Sheffield–Nottingham increment (MSE 28,078). MATH4069 coursework.</p></div>
+    <div class="arrow">→</div>
+  </div>
+
+  <a href="https://github.com/manojchandra10/UoN-QMC-Hospital-Database-and-Web-Interface-Project/" target="_blank" class="proj reveal">
+    <div class="pr-meta">FULL-STACK · DISTINCTION<br><span class="pr-tag">PHP · MySQL · Docker</span></div>
+    <div><h3>QMC HOSPITAL DATABASE & WEB PORTAL</h3><p>PHP/MySQL hospital management system with role-based access, patient search, admissions, prescriptions, parking permits, and a custom audit trail. Graded Distinction at UoN.</p><div class="pr-links"><span class="pr-link">GitHub ↗</span></div></div>
+    <div class="arrow">→</div>
+  </a>
+</section>
+
+<!-- MORE PROJECTS -->
+<section class="sec-green projects-section">
+  <div class="sec-header reveal">
+    <div><div class="sec-mod">// Projects (cont.)</div><div class="sec-title2">SIMULATIONS & EDA</div></div>
+    <div class="sec-num" style="color:rgba(0,0,0,0.3)">// 002b</div>
+  </div>
+  <a href="https://github.com/manojchandra10/British_Airways_DS_Project" target="_blank" class="proj reveal">
+    <div class="pr-meta">FORAGE SIMULATION</div>
+    <div><h3>BRITISH AIRWAYS DS</h3><p>Web scraping 2,000+ reviews with BeautifulSoup, NLP sentiment analysis, and Random Forest booking prediction model.</p><div class="pr-links"><span class="pr-link">GitHub ↗</span></div></div>
+    <div class="arrow">→</div>
+  </a>
+  <a href="https://github.com/manojchandra10/BCG_GenAI_Chatbot_Project" target="_blank" class="proj reveal">
+    <div class="pr-meta">FORAGE SIMULATION</div>
+    <div><h3>BCG GENAI CHATBOT</h3><p>AI-powered financial chatbot parsing 10-K and 10-Q reports with rule-based logic to provide user-friendly corporate insights.</p><div class="pr-links"><span class="pr-link">GitHub ↗</span></div></div>
+    <div class="arrow">→</div>
+  </a>
+  <a href="https://github.com/manojchandra10" target="_blank" class="proj reveal">
+    <div class="pr-meta">EDA · PYTHON</div>
+    <div><h3>BANKS FINANCE ANALYSIS</h3><p>10-year exploratory analysis of 6 major banks' stock data (2014–2024) using Pandas, Matplotlib, and Seaborn.</p><div class="pr-links"><span class="pr-link">GitHub ↗</span></div></div>
+    <div class="arrow">→</div>
+  </a>
+</section>
+
+<!-- SKILLS -->
+<section class="sec-light skills-section" id="skills">
+  <div class="sec-header reveal">
+    <div><div class="sec-mod">// Skills</div><div class="sec-title2">WHAT I WORK WITH</div></div>
+    <div class="sec-num" style="color:var(--purple)">// 003</div>
+  </div>
+  <div class="skills-cols reveal">
+    <div class="skill-col"><h4><span class="dot"></span> LANGUAGES</h4><ul><li>Python</li><li>R</li><li>SQL</li><li>HTML / CSS</li><li>JavaScript</li><li>PHP</li><li>C++</li><li>LaTeX</li></ul></div>
+    <div class="skill-col"><h4><span class="dot"></span> ML & DATA</h4><ul><li>Scikit-learn</li><li>XGBoost</li><li>TensorFlow</li><li>Keras</li><li>Pandas</li><li>NumPy</li><li>NLTK</li><li>PySpark</li></ul></div>
+    <div class="skill-col"><h4><span class="dot"></span> VISUALISATION</h4><ul><li>Matplotlib</li><li>Seaborn</li><li>Plotly</li><li>Tableau</li><li>Power BI</li><li>ggplot2</li></ul></div>
+    <div class="skill-col"><h4><span class="dot"></span> TOOLS & INFRA</h4><ul><li>Docker</li><li>Git</li><li>Nginx</li><li>React</li><li>Flask</li><li>Django</li><li>MySQL</li></ul></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu-section" id="education">
+  <div class="sec-header reveal">
+    <div><div class="sec-mod2">// Education</div><div class="sec-title2">WHERE I STUDIED</div></div>
+    <div class="sec-num">// 004</div>
+  </div>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-year">2025 – 2026</div>
+      <h3>MSC DATA SCIENCE</h3>
+      <div class="edu-uni">University of Nottingham, UK</div>
+      <p class="edu-mods">Machine Learning, Statistical ML, Big Data, Databases, Time Series & Forecasting</p>
+      <span class="edu-badge">SOUTH ASIA POSTGRADUATE EXCELLENCE AWARD</span>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2019 – 2022</div>
+      <h3>BSC (HONS) MATHEMATICS</h3>
+      <div class="edu-uni">University of Delhi, India</div>
+      <p class="edu-mods">First-Class Honours — Probability, Statistics, Mathematical Finance, Linear Algebra</p>
+      <span class="edu-badge">INSPIRE SCHOLARSHIP — TOP 1% NATIONALLY</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="split" id="experience" style="border-top:var(--border)">
+  <div class="split-text reveal">
+    <div class="sec-mod">// Experience — Where I've Worked</div>
+    <h2>EXPERIENCE</h2>
+    <div style="margin-top:1.5rem">
+      <div style="border-top:var(--border);padding:1.5rem 0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--green);margin-bottom:0.3rem">OCT – DEC 2024</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;margin-bottom:0.3rem">AI TRAINER (MATHEMATICS) — OUTLIER AI</div>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.7">QA on AI-generated mathematical models. Evaluated calculus and algebra outputs for hallucination and factual accuracy. Developed complex maths questions to improve model comprehension.</p>
+      </div>
+      <div style="border-top:var(--border);padding:1.5rem 0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--green);margin-bottom:0.3rem">MAY – JUL 2024</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;margin-bottom:0.3rem">DATA SCIENCE INTERN — THE SPARKS FOUNDATION</div>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.7">Built supervised and unsupervised ML models (linear regression, K-means clustering). Created detailed visualisations. Conducted 15 peer reviews and supported fellow interns.</p>
+      </div>
+      <div style="border-top:var(--border);border-bottom:var(--border);padding:1.5rem 0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--green);margin-bottom:0.3rem">2018 – PRESENT</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;margin-bottom:0.3rem">MATHEMATICS TUTOR — PRIVATE (FREELANCE)</div>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.7">Tutoring primary and secondary school students in mathematics. 100% pass rate in final exams. Focus on building problem-solving intuition through interactive, positive learning environments.</p>
+      </div>
+    </div>
+  </div>
+  <div class="split-img">
+    <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=900&amp;q=80" alt="Mathematics" style="filter:grayscale(1) contrast(1.1)" loading="lazy">
+    <div class="img-label">DATA × MATH × CODE</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec-green contact" id="contact">
+  <div class="sec-mod reveal" style="color:rgba(0,0,0,0.3);margin-bottom:1rem">// Contact</div>
+  <h2 class="reveal" style="color:var(--bg)">LET'S<br>CONNECT</h2>
+  <div class="contact-links reveal">
+    <a href="mailto:manojchandra910@outlook.com" class="contact-link">Email ↗</a>
+    <a href="https://www.linkedin.com/in/manojchandra10/" target="_blank" class="contact-link">LinkedIn ↗</a>
+    <a href="https://github.com/manojchandra10" target="_blank" class="contact-link">GitHub ↗</a>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="footer-name">MANOJ CHANDRA</div>
+  <div class="footer-copy">© 2026 · BUILT WITH STUBBORNNESS AND CAFFEINE</div>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('vis'),i*50);obs.unobserve(el.target)}})},{threshold:0.05});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));
+</script>
+</body>
+</html>
