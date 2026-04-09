@@ -42,7 +42,25 @@ nav .logo span{color:var(--purple)}
 .nav-links a{font-family:'JetBrains Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;padding:0.4rem 0.7rem;color:var(--gray);transition:color 0.2s}
 .nav-links a:hover{color:var(--white)}
 .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:4px}
-.hamburger span{display:block;width:22px;height:2px;background:var(--white)}
+/* .hamburger span{display:block;width:22px;height:2px;background:var(--white)} */
+  .hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  transition: all 0.3s ease; /* This makes the animation smooth */
+}
+
+/* Transform the lines into an X when the menu is open */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0; /* Hides the middle line */
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
 
 /* UTILITY */
 .mono{font-family:'JetBrains Mono',monospace}
@@ -211,7 +229,8 @@ nav .logo span{color:var(--purple)}
 
 <nav>
   <a href="#top" class="logo" style="text-decoration:none">M.</a>
-  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  <!-- <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button> -->
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.classList.toggle('open');" aria-label="Menu"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a href="blog.html">Blog</a>
   </div>
@@ -406,10 +425,21 @@ nav .logo span{color:var(--purple)}
   <div class="footer-copy">© 2026 · BUILT WITH STUBBORNNESS AND CAFFEINE</div>
 </div>
 
-<script>
+<!-- <script>
 const obs=new IntersectionObserver(e=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('vis'),i*50);obs.unobserve(el.target)}})},{threshold:0.05});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));
+</script> -->
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('vis'),i*50);obs.unobserve(el.target)}})},{threshold:0.05});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Updated: Removes the 'open' class from both the menu AND the hamburger icon
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  document.querySelector('.nav-links').classList.remove('open');
+  document.querySelector('.hamburger').classList.remove('open');
+}));
 </script>
+  
 </body>
 </html>
