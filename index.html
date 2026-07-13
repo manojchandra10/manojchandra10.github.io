@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manoj Chandra — Data Scientist & Mathematician</title>
+<title>Manoj Chandra, Data Scientist & Mathematician</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -41,9 +41,33 @@ nav .logo span{color:var(--purple)}
 .nav-links{display:flex;gap:0.2rem}
 .nav-links a{font-family:'JetBrains Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;padding:0.4rem 0.7rem;color:var(--gray);transition:color 0.2s}
 .nav-links a:hover{color:var(--white)}
+/* CV nav link — orange theme, animated underline from centre out */
+.nav-links a.nav-cv {
+  position: relative;
+  color: var(--green);
+  font-weight: 700;
+}
+.nav-links a.nav-cv::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 1px;
+  background: var(--green);
+  transition: width 0.35s ease, left 0.35s ease;
+}
+.nav-links a.nav-cv:hover {
+  color: var(--green);
+}
+.nav-links a.nav-cv:hover::before {
+  width: calc(100% - 1.4rem);
+  left: 0.7rem;
+}
+
 .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:4px}
-/* .hamburger span{display:block;width:22px;height:2px;background:var(--white)} */
-  .hamburger span {
+/*.hamburger span{display:block;width:22px;height:2px;background:var(--white)}*/
+.hamburger span {
   display: block;
   width: 22px;
   height: 2px;
@@ -91,7 +115,7 @@ nav .logo span{color:var(--purple)}
 .stripes-v{position:absolute;top:0;right:0;width:120px;height:100%;background:repeating-linear-gradient(0deg,var(--green) 0px,var(--green) 2px,transparent 2px,transparent 7px);opacity:0.12;z-index:1}
 
 /* ═══ FULL-WIDTH STATEMENT ═══ */
-.statement-section{background:var(--bg);padding:5rem 3rem;border-top:var(--border)}
+.statement-section{background:var(--bg);padding:5rem 3rem;border-top:var(--border);border-bottom:var(--border);}
 .statement-section h2{font-family:'Oswald',sans-serif;font-size:clamp(2.5rem,6vw,5rem);text-transform:uppercase;line-height:0.95;color:var(--green)}
 .statement-section .sub{font-family:'Oswald',sans-serif;font-size:clamp(1.5rem,3.5vw,3rem);text-transform:uppercase;color:var(--white);margin-top:0.5rem;line-height:1.1}
 
@@ -229,10 +253,11 @@ nav .logo span{color:var(--purple)}
 
 <nav>
   <a href="#top" class="logo" style="text-decoration:none">M.</a>
-  <!-- <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button> -->
+  <!--<button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>-->
   <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.classList.toggle('open');" aria-label="Menu"><span></span><span></span><span></span></button>
   <div class="nav-links">
-    <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a href="blog.html">Blog</a>
+    <!--<a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a href="blog.html">Blog</a>-->
+    <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a href="blog.html">Blog</a><a href="assets/Manoj_Chandra_CV.pdf" target="_blank" class="nav-cv">CV</a>
   </div>
 </nav>
 
@@ -242,7 +267,7 @@ nav .logo span{color:var(--purple)}
     <div class="hero-explore">MSc Data Science · University of Nottingham</div>
     <h1>MANOJ<br><span class="green">CHANDRA</span></h1>
     <div class="hero-sub">DATA SCIENCE & MATHEMATICS</div>
-    <p style="font-size:0.95rem;color:var(--gray);line-height:1.8;max-width:480px;margin-bottom:2rem">I build things with data, code, and statistical rigour — from LSTM forecasting apps to contaminated chemical detectors.</p>
+    <p style="font-size:0.95rem;color:var(--gray);line-height:1.8;max-width:480px;margin-bottom:2rem">I build things with data, code, and statistical rigour. My work spans from LSTM forecasting apps to contaminated chemical detectors.</p>
     <div class="hero-phases">
       <div class="phase"><div class="p-num">001</div><div class="p-label"><span class="hl">1ST</span> PLACE</div></div>
       <div class="phase"><div class="p-num">002</div><div class="p-label"><span class="hl">7+</span> PROJECTS</div></div>
@@ -252,7 +277,8 @@ nav .logo span{color:var(--purple)}
   </div>
   <div class="hero-right">
     <div class="stripes-v"></div>
-    <img src="assets/IMG_0111.JPEG" alt="profile picture" loading="eager">
+    <!--<img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=900&amp;q=80" alt="Data visualization" loading="eager">-->
+    <img src="assets/IMG_1119.JPEG" alt="Data visualization" loading="eager">
     <div class="overlay-text">MANOJ<br>CHANDRA</div>
   </div>
 </section>
@@ -261,6 +287,10 @@ nav .logo span{color:var(--purple)}
 <div class="statement-section">
   <h2 style="color:var(--white);font-size:clamp(2.5rem,5.5vw,4.2rem);line-height:1.05;letter-spacing:-1px">TRAINING MYSELF BEFORE I CAN TRAIN <span style="color:var(--green)">ML MODELS</span></h2>
 </div>
+
+<!--<div class="marquee">-->
+<!--  <div class="marquee-inner">Python<span class="s">◆</span>R<span class="s">◆</span>SQL<span class="s">◆</span>Machine Learning<span class="s">◆</span>Deep Learning<span class="s">◆</span>Statistical Modelling<span class="s">◆</span>XGBoost<span class="s">◆</span>TensorFlow<span class="s">◆</span>Docker<span class="s">◆</span>React<span class="s">◆</span>Flask<span class="s">◆</span>Python<span class="s">◆</span>R<span class="s">◆</span>SQL<span class="s">◆</span>Machine Learning<span class="s">◆</span>Deep Learning<span class="s">◆</span>Statistical Modelling<span class="s">◆</span>XGBoost<span class="s">◆</span>TensorFlow<span class="s">◆</span>Docker<span class="s">◆</span>React<span class="s">◆</span>Flask<span class="s">◆</span></div>-->
+<!--</div>-->
 
 <!-- <div class="marquee">
   <div class="marquee-inner">Python<span class="s">·</span>R<span class="s">·</span>SQL<span class="s">·</span>Machine Learning<span class="s">·</span>Deep Learning<span class="s">·</span>Statistical Modelling<span class="s">·</span>Time Series<span class="s">·</span>XGBoost<span class="s">·</span>TensorFlow<span class="s">·</span>Docker<span class="s">·</span>React<span class="s">·</span>PHP<span class="s">·</span>Python<span class="s">·</span>R<span class="s">·</span>SQL<span class="s">·</span>Machine Learning<span class="s">·</span>Deep Learning<span class="s">·</span>Statistical Modelling<span class="s">·</span>Time Series<span class="s">·</span>XGBoost<span class="s">·</span>TensorFlow<span class="s">·</span>Docker<span class="s">·</span>React<span class="s">·</span>PHP<span class="s">·</span></div>
@@ -273,12 +303,12 @@ nav .logo span{color:var(--purple)}
     <div class="img-label">DATA · CODE · MATHEMATICS</div>
   </div>
   <div class="split-text reveal">
-    <div class="sec-mod">// About — The Short Version</div>
+    <div class="sec-mod">// About in Brief</div>
     <!-- <h2>DATA MEETS<br>MATHEMATICS</h2> -->
      <h2>EMBRACING THE<br>UNKNOWN</h2>
     <p>I'm an MSc Data Science student at the University of Nottingham, with a First-Class Honours degree in Mathematics from the University of Delhi. I'm interested in the space where statistical theory meets real-world prediction problems.</p>
     <p>My recent work spans from building a <em>privacy-first file conversion tool</em> (DeltaConvert) to training <em>LSTM models for currency forecasting</em> (Stochastix), to winning a statistical ML competition by proving that a two-parameter linear model can beat a Random Forest when the data structure is right.</p>
-    <p>I care about understanding <em>why</em> a model works, not just <em>that</em> it works.</p>
+    <p>I care about understanding <em>why</em> a model works.</p>
   </div>
 </section>
 
@@ -291,7 +321,7 @@ nav .logo span{color:var(--purple)}
 
   <a href="https://deltaconvert.com" target="_blank" class="proj reveal">
     <div class="pr-meta">FULL-STACK · LIVE<br><span class="pr-tag">Flask · Docker · Nginx</span></div>
-    <div><h3>DELTACONVERT</h3><p>Privacy-first file conversion tool — images, documents, OCR — all processed server-side. Built with Flask, deployed on Hetzner with Docker Compose, Nginx, and SSL via Certbot.</p><div class="pr-links"><span class="pr-link">Live Site ↗</span><span class="pr-link">GitHub ↗</span></div></div>
+    <div><h3>DELTACONVERT</h3><p>Privacy-first file conversion tool for images, documents, and OCR, all processed server-side. Built with Flask, deployed on Hetzner with Docker Compose, Nginx, and SSL via Certbot.</p><div class="pr-links"><span class="pr-link">Live Site ↗</span><span class="pr-link">GitHub ↗</span></div></div>
     <div class="arrow">→</div>
   </a>
 
@@ -303,7 +333,7 @@ nav .logo span{color:var(--purple)}
 
   <div class="proj reveal">
     <div class="pr-meta">ACADEMIC · R · 1ST PLACE<br><span class="pr-tag">R · XGBoost · OLS</span></div>
-    <div><h3>STATISTICAL ML — BEST SCORE, BOTH CHALLENGES</h3><p>Chemicals: Per-type linear regression beating Random Forest (score 98, 1st of all groups). Trains: XGBoost on Sheffield–Nottingham increment (MSE 28,078). MATH4069 coursework.</p></div>
+    <div><h3>STATISTICAL ML, BEST SCORE BOTH CHALLENGES</h3><p>Chemicals: Per-type linear regression beating Random Forest (score 98, 1st of all groups). Trains: XGBoost on Sheffield–Nottingham increment (MSE 28,078). MATH4069 coursework.</p></div>
     <div class="arrow">→</div>
   </div>
 
@@ -369,8 +399,8 @@ nav .logo span{color:var(--purple)}
       <div class="edu-year">2019 – 2022</div>
       <h3>BSC (HONS) MATHEMATICS</h3>
       <div class="edu-uni">University of Delhi, India</div>
-      <p class="edu-mods">First-Class Honours — Probability, Statistics, Mathematical Finance, Linear Algebra</p>
-      <span class="edu-badge">INSPIRE SCHOLARSHIP — TOP 1% NATIONALLY</span>
+      <p class="edu-mods">First-Class Honours in Probability, Statistics, Mathematical Finance, and Linear Algebra</p>
+      <span class="edu-badge">INSPIRE SCHOLARSHIP FOR TOP 1% NATIONALLY</span>
     </div>
   </div>
 </section>
@@ -378,22 +408,22 @@ nav .logo span{color:var(--purple)}
 <!-- EXPERIENCE -->
 <section class="split" id="experience" style="border-top:var(--border)">
   <div class="split-text reveal">
-    <div class="sec-mod">// Experience — Where I've Worked</div>
+    <div class="sec-mod">// Experience and Past Roles</div>
     <h2>EXPERIENCE</h2>
     <div style="margin-top:1.5rem">
       <div style="border-top:var(--border);padding:1.5rem 0">
         <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--green);margin-bottom:0.3rem">OCT – DEC 2024</div>
-        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;margin-bottom:0.3rem">AI TRAINER (MATHEMATICS) — OUTLIER AI</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;margin-bottom:0.3rem">AI TRAINER (MATHEMATICS) AT OUTLIER AI</div>
         <p style="font-size:0.82rem;color:var(--gray);line-height:1.7">QA on AI-generated mathematical models. Evaluated calculus and algebra outputs for hallucination and factual accuracy. Developed complex maths questions to improve model comprehension.</p>
       </div>
       <div style="border-top:var(--border);padding:1.5rem 0">
         <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--green);margin-bottom:0.3rem">MAY – JUL 2024</div>
-        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;margin-bottom:0.3rem">DATA SCIENCE INTERN — THE SPARKS FOUNDATION</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;margin-bottom:0.3rem">DATA SCIENCE INTERN AT THE SPARKS FOUNDATION</div>
         <p style="font-size:0.82rem;color:var(--gray);line-height:1.7">Built supervised and unsupervised ML models (linear regression, K-means clustering). Created detailed visualisations. Conducted 15 peer reviews and supported fellow interns.</p>
       </div>
       <div style="border-top:var(--border);border-bottom:var(--border);padding:1.5rem 0">
         <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--green);margin-bottom:0.3rem">2018 – PRESENT</div>
-        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;margin-bottom:0.3rem">MATHEMATICS TUTOR — PRIVATE (FREELANCE)</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;margin-bottom:0.3rem">MATHEMATICS TUTOR (PRIVATE FREELANCE)</div>
         <p style="font-size:0.82rem;color:var(--gray);line-height:1.7">Tutoring primary and secondary school students in mathematics. 100% pass rate in final exams. Focus on building problem-solving intuition through interactive, positive learning environments.</p>
       </div>
     </div>
@@ -412,6 +442,7 @@ nav .logo span{color:var(--purple)}
     <a href="mailto:manojchandra910@outlook.com" class="contact-link">Email ↗</a>
     <a href="https://www.linkedin.com/in/manojchandra10/" target="_blank" class="contact-link">LinkedIn ↗</a>
     <a href="https://github.com/manojchandra10" target="_blank" class="contact-link">GitHub ↗</a>
+    <a href="assets/Manoj_Chandra_CV.pdf" target="_blank" class="contact-link">CV (PDF) ↓</a>
   </div>
 </section>
 
@@ -435,6 +466,5 @@ document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',
   document.querySelector('.hamburger').classList.remove('open');
 }));
 </script>
-  
 </body>
 </html>
